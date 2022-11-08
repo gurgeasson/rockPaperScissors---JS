@@ -17,7 +17,16 @@
     <button type="button" class="btn btn-outline-primary btn-lg" id="Scissors">Scissors</button>    
     
     <p id="demo">
-    
+      
+    <scipt>
+        const element = document.getElementById("Rock");
+      element.addEventListener("click", myFunction);
+
+      function myFunction() {
+        document.getElementById("demo").innerHTML = "Smash";
+      }
+    </script>
+      
     <script src='game.js'></script>
 
     <!-- Optional JavaScript; choose one of the two! -->
