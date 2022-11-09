@@ -13,5 +13,8 @@ elementSciss.buttonParam = "Snip-Snip"
 the following function I built using the above link */
 
 function RPS(evt) {
-  document.getElementById("demo").innerHTML = evt.currentTarget.buttonParam;
+  document.getElementById("playerChoice").innerHTML = evt.currentTarget.buttonParam;
+  document.getElementById("computerChoice").innerHTML = (Math.floor(Math.random() * 3) + 1);
 }
+
+https://eduherminio.github.io/blog/rock-paper-scissors/
