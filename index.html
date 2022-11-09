@@ -8,15 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Rock Paper Scissors</title>
   </head>
   <body>
-    
-    <button type="button" class="btn btn-outline-primary btn-lg" id="Rock">Rock</button>
-    <button type="button" class="btn btn-outline-primary btn-lg" id="Paper">Paper</button>
-    <button type="button" class="btn btn-outline-primary btn-lg" id="Scissors">Scissors</button>    
-    
-    <p id="demo"></p>
+    <div class="container d-flex justify-content-around">
+      <button type="button" class="btn btn-outline-primary btn-lg" id="Rock">Rock</button>
+      <button type="button" class="btn btn-outline-primary btn-lg" id="Paper">Paper</button>
+      <button type="button" class="btn btn-outline-primary btn-lg" id="Scissors">Scissors</button>
+    </div>
+    <div class="container d-flex justify-content-around">    
+      <p id="playerChoice"></p>
+      <p id="computerChoice"></p>
+    </div>
       
     <script src='game.js'></script>
 
