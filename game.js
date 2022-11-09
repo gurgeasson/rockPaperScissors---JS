@@ -17,4 +17,17 @@ function RPS(evt) {
   document.getElementById("computerChoice").innerHTML = (Math.floor(Math.random() * 3) + 1);
 }
 
-https://eduherminio.github.io/blog/rock-paper-scissors/
+/*https://eduherminio.github.io/blog/rock-paper-scissors/
+
+Rock = 1
+Papper = 2
+Scissors = 3 
+
+1 beats 3
+2 beats 1
+3 beats 2
+
+if playerChoice - computerChoice = 1 or -2 than playerScore++
+if playerChoice - computerChoice = -1 or 2 than computerScore++
+if playerChoice - computerChoice = 0 than draw
+*/
