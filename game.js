@@ -2,28 +2,16 @@ const elementRock = document.getElementById("Rock");
 const elementPaper = document.getElementById("Paper");
 const elementSciss = document.getElementById("Scissors");
 
-elementRock.addEventListener("click", myFunction(R));
-elementPaper.addEventListener("click", myFunctionP);
-elementSciss.addEventListener("click", myFunctionS);
+elementRock.addEventListener("click", RPS);
+elementRock.buttonParam = "Smash"
+elementPaper.addEventListener("click", RPS);
+elementPaper.buttonParam = "Rustle"
+elementSciss.addEventListener("click", RPS);
+elementSciss.buttonParam = "Snip-Snip"
 
-      function myFunctionR() {
-        document.getElementById("demo").innerHTML = "Smash";
-      }
+/* https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
+the following function I built using the above link */
 
-      function myFunctionP() {
-        document.getElementById("demo").innerHTML = "Rustle";
-      }
-
-      function myFunctionS() {
-        document.getElementById("demo").innerHTML = "Snip-Snip";
-      }
-
-
-/*set a variable to message (smash or rustle or snip-snip)
-
-function RPS(hand it down message variable) {
-  document.getElementByID("demo").innerHTML = "message variable";
-*/
-
-
+function RPS(evt) {
+  document.getElementById("demo").innerHTML = evt.currentTarget.buttonParam;
 }
