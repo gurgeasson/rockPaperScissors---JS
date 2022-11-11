@@ -2,6 +2,9 @@ const elementRock = document.getElementById("Rock");
 const elementPaper = document.getElementById("Paper");
 const elementSciss = document.getElementById("Scissors");
 
+let hScore = 0;
+let cScore = 0;
+
 elementRock.addEventListener("click", RPS);
 //elementRock.buttonParam = "Smash";
 elementRock.buttonParam = 1;
@@ -12,38 +15,37 @@ elementSciss.addEventListener("click", RPS);
 //elementSciss.buttonParam = "Snip-Snip";
 elementSciss.buttonParam = 3;
 
-/* https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
-the following function I built using the above link */
-
 function RPS(evt) {
-  var humanChoice = evt.currentTarget.buttonParam;
-  var computerChoice = (Math.floor(Math.random() * 3) + 1);
+  /* https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
+  the following function I built using the above link */
+
+  let humanChoice = evt.currentTarget.buttonParam;
+  let computerChoice = (Math.floor(Math.random() * 3) + 1);
   
-  document.getElementById("playerChoice").innerHTML = humanChoice;
-  document.getElementById("computerChoice").innerHTML = computerChoice;
-  
+  //choice readout
+  document.getElementById("playerChoice").innerHTML = "human chose: " + humanChoice;
+  document.getElementById("computerChoice").innerHTML = "computer chose: " + computerChoice;
+  //calculate winner
   winnerOperator = humanChoice - computerChoice;
-  document.getElementById("winnerOperator").innerHTML = winnerOperator;
+  document.getElementById("winnerOperator").innerHTML = "winnerOperator: " + winnerOperator;
+    
+  /*https:\/\/eduherminio.github.io\/blog\/rock-paper-scissors
+  the following 'if else' logic was built with help from the above link. 
+  it makes a decision of who wins, anounces it and increments score
+  */
   
   if (humanChoice === computerChoice) {
     document.getElementById("winnerAnn").innerHTML = "draw";
   } else if (winnerOperator === 1 || winnerOperator === -2){
     document.getElementById("winnerAnn").innerHTML = "human wins";
+    hScore ++
   } else if (winnerOperator === -1 || winnerOperator === 2){
     document.getElementById("winnerAnn").innerHTML = "computer wins";
+    cScore ++
   } else {
     document.getElementById("winnerAnn").innerHTML = "error";
   }
+  
+  //total score readout
+  document.getElementById("score").innerHTML = "score   " + hScore + " : " + cScore;
 }
-
-/*https://eduherminio.github.io/blog/rock-paper-scissors/
-Rock = 1
-Papper = 2
-Scissors = 3
-1 beats 3
-2 beats 1
-3 beats 2
-if playerChoice - computerChoice = 1 or -2 than playerScore++
-if playerChoice - computerChoice = -1 or 2 than computerScore++
-if playerChoice - computerChoice = 0 than draw
-*/
