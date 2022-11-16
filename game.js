@@ -1,51 +1,50 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+const elementRock = document.getElementById("Rock");
+const elementPaper = document.getElementById("Paper");
+const elementSciss = document.getElementById("Scissors");
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+let hScore = 0;
+let cScore = 0;
 
-    <title>Rock Paper Scissors</title>
-  </head>
-  <body>
+elementRock.addEventListener("click", RPS);
+//elementRock.buttonParam = "Smash";
+elementRock.buttonParam = 1;
+elementPaper.addEventListener("click", RPS);
+//elementPaper.buttonParam = "Rustle";
+elementPaper.buttonParam = 2;
+elementSciss.addEventListener("click", RPS);
+//elementSciss.buttonParam = "Snip-Snip";
+elementSciss.buttonParam = 3;
+
+function RPS(evt) {
+  /* https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
+  the following function I built using the above link */
+
+  let humanChoice = evt.currentTarget.buttonParam;
+  let computerChoice = (Math.floor(Math.random() * 3) + 1);
+  
+  //choice readout
+  document.getElementById("playerChoice").innerHTML = "human chose: " + humanChoice;
+  document.getElementById("computerChoice").innerHTML = "computer chose: " + computerChoice;
+  //calculate winner
+  winnerOperator = humanChoice - computerChoice;
     
-    <div class="container px-4 py-5 my-5 text-center">
-      <h1 class="display-5 fw-bold">Rack Paper Scissors - coded in JavaScipt</h1>
-    </div>
-    <div class="container px-4 py-5 my-5 text-center">
-      <div class="col-lg-6 mx-auto">
-        <div class="">
-          <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3" id="Rock">Rock</button>
-          <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3" id="Paper">Paper</button>
-          <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3" id="Scissors">Scissors</button>
-        </div>
-        <div class="row justify-content-around">    
-          <div class="col" id="playerChoice"></div>
-          <div class="col" id="computerChoice"></div>
-        </div>
-        <div class="row justify-content-around">
-          <div class="col" id="winnerAnn"></div>
-          <div class="col" id="score"></div>
-        </div>
-      </div>
-    </div>
-    
-    <script src='game.js'></script>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+  /*https:\/\/eduherminio.github.io\/blog\/rock-paper-scissors
+  the following 'if else' logic was built with help from the above link. 
+  it makes a decision of who wins, anounces it and increments score
+  */
+  
+  if (humanChoice === computerChoice) {
+    document.getElementById("winnerAnn").innerHTML = "draw";
+  } else if (winnerOperator === 1 || winnerOperator === -2){
+    document.getElementById("winnerAnn").innerHTML = "human wins this round";
+    hScore ++
+  } else if (winnerOperator === -1 || winnerOperator === 2){
+    document.getElementById("winnerAnn").innerHTML = "computer wins this round";
+    cScore ++
+  } else {
+    document.getElementById("winnerAnn").innerHTML = "error";
+  }
+  
+  //total score readout
+  document.getElementById("score").innerHTML = "total score   " + hScore + " : " + cScore;
+}
